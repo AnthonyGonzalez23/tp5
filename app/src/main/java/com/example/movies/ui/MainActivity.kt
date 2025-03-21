@@ -16,6 +16,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import androidx.navigation.toRoute
 import com.example.movies.ui.component.SearchMovieScreen
 import com.example.movies.ui.detail.DetailMovieScreen
 import kotlinx.serialization.Serializable
@@ -27,12 +28,6 @@ class MainActivity : ComponentActivity() {
 
     @Serializable
     data class DetailRoute(val id: String)
-
-    companion object {
-        const val SEARCH_ROUTE = "search"
-        const val DETAIL_ROUTE = "detail/{id}"
-        const val DETAIL_ROUTE_WITH_ARGS = "detail/"
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,21 +57,18 @@ class MainActivity : ComponentActivity() {
         NavHost(
             modifier = modifier,
             navController = navController,
-            startDestination = SEARCH_ROUTE
+            startDestination = SearchRoute
         ) {
-            composable(SEARCH_ROUTE) {
+            composable<SearchRoute> {
                 SearchMovieScreen(
                     onItemClick = { movieId ->
-                        navController.navigate("${DETAIL_ROUTE_WITH_ARGS}$movieId")
+                        navController.navigate(DetailRoute(movieId))
                     }
                 )
             }
-            composable(
-                route = DETAIL_ROUTE,
-                arguments = listOf(navArgument("id") { type = NavType.StringType })
-            ) { backStackEntry ->
-                val movieId = backStackEntry.arguments?.getString("id") ?: ""
-                DetailMovieScreen(movieId = movieId)
+            composable<DetailRoute> { backStackEntry ->
+                val detailRoute = backStackEntry.toRoute<DetailRoute>()
+                DetailMovieScreen(movieId = detailRoute.id)
             }
         }
     }
