@@ -51,35 +51,34 @@ android {
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.activity.compose)
-
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.kotlinx.serialization.json)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.tooling.preview)
     debugImplementation(libs.androidx.ui.tooling)
 
     implementation(libs.androidx.material3)
 
-    //implementation(libs.kotlinx.serialization.json)
+    implementation(libs.kotlinx.serialization.json)
 
-    //implementation(libs.coil.compose)
+    implementation(libs.coil.compose)
 
-    //implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-    // Navigation
-    //implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
 
-    // Coroutines
-    //implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.kotlinx.coroutines.android)
 
-    // Retrofit
-    //implementation(libs.retrofit)
-    //implementation(libs.converter.gson)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 
-    //Room
-    //implementation(libs.androidx.room.runtime)
-    //implementation(libs.androidx.room.ktx)
-    //ksp(libs.androidx.room.compiler)
+    implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.room.ktx)
+    ksp(libs.androidx.room.compiler)
 }

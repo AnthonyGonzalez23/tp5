@@ -1,6 +1,7 @@
 [versions]
 activityKtx = "1.10.0"
 coilCompose = "2.6.0"
+coilComposeVersion = "2.1.0"
 coreKtx = "1.15.0"
 kotlinxCoroutinesAndroid = "1.9.0"
 kotlinxSerializationJson = "1.7.1"
@@ -38,6 +39,7 @@ androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview
 
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 
+coil-compose-v210 = { module = "io.coil-kt:coil-compose", version.ref = "coilComposeVersion" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
